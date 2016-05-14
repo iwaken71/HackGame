@@ -14,6 +14,7 @@ GameObject:
   - 114: {fileID: 11491450}
   - 114: {fileID: 11406392}
   - 114: {fileID: 11412438}
+  - 114: {fileID: 11405736}
   m_Layer: 0
   m_Name: train
   m_TagString: Train
@@ -78,6 +79,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11405736
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1733ab451a0084ca3a18527f4f572a52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0.5
+  speed: 1
 --- !u!114 &11406392
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -170,7 +184,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 136618}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 31ee5975b641844b6a45bb8c79eaf427, type: 3}
   m_Name: 

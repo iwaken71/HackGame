@@ -21,6 +21,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>{
 	int currentAngle = 0; //0 to 7
 	public Vector3 currentCenterPositon;
 	public static float scale =1; 
+	private TrainSplineMove trainSplineMove;
 	// trainManager
 
 	public enum State{
@@ -62,7 +63,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>{
 				photonView = GameObject.Find ("NetworkManager").GetComponent<PhotonView> ();
 			}
 			if (train == null) {
-				train = GameObject.FindGameObjectWithTag ("Train");
+				if (GameObject.FindGameObjectWithTag ("Train")) {
+					train = GameObject.FindGameObjectWithTag ("Train");
+					trainSplineMove = train.GetComponent<TrainSplineMove> ();
+				}
 			}
 			if (player == null) {
 				player = GameObject.FindGameObjectWithTag ("Player");
@@ -165,6 +169,10 @@ public class GameManager : SingletonMonoBehaviour<GameManager>{
 
 		currentCenterPositon = that.transform.position;
 
+		//StartMove
+		if (trainSplineMove.GetCanMove () == false) {
+			trainSplineMove.StartMove ();
+		}
 
 	}
 
@@ -187,6 +195,15 @@ public class GameManager : SingletonMonoBehaviour<GameManager>{
 			UpdateCurrentAngle (0);
 		}
 		if(Input.GetKeyDown(KeyCode.Alpha3)) {
+			Spawn((int)Direction.right);
+			UpdateCurrentAngle (1);
+		}else if(Input.GetKeyDown(KeyCode.JoystickButton7)){
+			Spawn((int)Direction.left);
+			UpdateCurrentAngle (-1);
+		} else if(Input.GetKeyDown(KeyCode.JoystickButton5)) {
+			Spawn((int)Direction.straight);
+			UpdateCurrentAngle (0);
+		} else if(Input.GetKeyDown(KeyCode.JoystickButton8)) {
 			Spawn((int)Direction.right);
 			UpdateCurrentAngle (1);
 		}
