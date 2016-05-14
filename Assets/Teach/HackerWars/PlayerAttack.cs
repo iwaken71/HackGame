@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerAttack : MonoBehaviour {
+public class PlayerAttack : Photon.MonoBehaviour {
 
 	public Transform spawnTran;
-	public GameObject bullet;
+	//public GameObject bullet;
 	private float touchTime = 0.0f;
 
 	private bool canShot = true;
@@ -26,7 +26,7 @@ public class PlayerAttack : MonoBehaviour {
 	}
 
 	void ShotBullet(){
-		Instantiate (bullet, spawnTran.position, spawnTran.rotation);
+		PhotonNetwork.Instantiate ("bullet", spawnTran.position, spawnTran.rotation,0);
 		canShot = false;
 	}
 }

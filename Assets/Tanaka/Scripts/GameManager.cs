@@ -12,16 +12,34 @@ public class GameManager : SingletonMonoBehaviour<GameManager>{
 	State state;
 	bool sceneStart = true;
 
+
+	// trainManager
+	GameObject WayPoints;
+	static int index = 2;
+
+	public string[] linePanels = new string[3];
+	int currentAngle = 0; //0 to 7
+	public Vector3 currentCenterPositon;
+	public static float scale =1; 
+	// trainManager
+
 	public enum State{
 		Start=0,
 		Game=1,
 		Rusult=2
 	}
 
+	enum Direction {
+		right=-1,
+		straight,
+		left
+	}
+
 	// Use this for initialization
 	void Start () {
 		state = State.Start;
 		sceneStart = true;
+		WayPoints = GameObject.FindGameObjectWithTag ("WayPoints");
 	}
 	
 	// Update is called once per frame
@@ -57,6 +75,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>{
 
 			iosGameUpdate ();
 			pcGameUpdate ();
+			GameTrainUpdate ();
 
 			break;
 		case State.Rusult:
@@ -115,5 +134,45 @@ public class GameManager : SingletonMonoBehaviour<GameManager>{
 	public State GetState(){
 		return state;
 
+	}
+	void Spawn(int dir){
+
+		GameObject that = PhotonNetwork.Instantiate (linePanels[dir+1], currentCenterPositon + scale*Vector3.forward, Quaternion.Euler(new Vector3(0,0,0)),0)as GameObject;
+
+		that.transform.RotateAround(currentCenterPositon, Vector3.up, currentAngle * 45 );
+
+		Transform waypoint = that.transform.FindChild ("Waypoint");
+		waypoint.name += index.ToString ();
+		waypoint.SetParent (WayPoints.transform);
+		index++;
+
+		currentCenterPositon = that.transform.position;
+
+
+	}
+
+	void UpdateCurrentAngle(int num){
+		currentAngle += num;
+		if (currentAngle == 8)
+			currentAngle = 0;
+		else if (currentAngle == -1)
+			currentAngle = 7;
+	}
+
+	void GameTrainUpdate(){
+		#if UNITY_EDITOR
+		if(Input.GetKeyDown(KeyCode.Alpha1)){
+			Spawn((int)Direction.left);
+			UpdateCurrentAngle (-1);
+		}
+		if(Input.GetKeyDown(KeyCode.Alpha2)) {
+			Spawn((int)Direction.straight);
+			UpdateCurrentAngle (0);
+		}
+		if(Input.GetKeyDown(KeyCode.Alpha3)) {
+			Spawn((int)Direction.right);
+			UpdateCurrentAngle (1);
+		}
+		#endif
 	}
 }

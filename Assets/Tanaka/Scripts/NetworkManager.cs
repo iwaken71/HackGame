@@ -43,7 +43,7 @@ public class NetworkManager : Photon.MonoBehaviour {
 
 	void PlayerMake(){
 		#if UNITY_EDITOR
-		player = PhotonNetwork.Instantiate ("Player",Vector3.zero,Quaternion.identity,0) as GameObject;
+		player = PhotonNetwork.Instantiate ("Train",Vector3.zero,Quaternion.identity,0) as GameObject;
 		GameObject obj2 = PhotonNetwork.Instantiate ("PCCamera",Vector3.zero,Quaternion.identity,0)as GameObject;
 		GameObject obj1 = player.transform.Find("CardboardMainHack").gameObject;
 		//GameObject obj2 =  PhotonNetwork.Instantiate ("PCCamera",Vector3.zero,Quaternion.identity,0)as GameObject;

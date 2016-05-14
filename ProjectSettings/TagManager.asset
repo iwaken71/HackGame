@@ -6,6 +6,7 @@ TagManager:
   tags:
   - iOSCamera
   - PCCamera
+  - WayPoints
   layers:
   - Default
   - TransparentFX

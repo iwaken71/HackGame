@@ -131,7 +131,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 409302}
   - 114: {fileID: 11470422}
-  - 114: {fileID: 11463952}
   m_Layer: 0
   m_Name: CardboardMainHack
   m_TagString: Untagged
@@ -186,6 +185,7 @@ GameObject:
   - 114: {fileID: 11444214}
   - 114: {fileID: 11476710}
   - 114: {fileID: 11447398}
+  - 114: {fileID: 11485058}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -709,19 +709,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa754a7f44bc94a67a70900ec82718e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11463952
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 143166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ad85c28ecdae4899808e50cbccab32b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnTran: {fileID: 468390}
-  bullet: {fileID: 169976, guid: f1bea461bf3d94ad8a3109ab61b75bc2, type: 2}
 --- !u!114 &11470050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -833,6 +820,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20fb7fbcfb2e642bba6211eb9ea19962, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11485058
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ad85c28ecdae4899808e50cbccab32b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnTran: {fileID: 468390}
 --- !u!114 &11494962
 MonoBehaviour:
   m_ObjectHideFlags: 1
