@@ -32,6 +32,15 @@ public class RoomManager : Photon.MonoBehaviour {
 	}
 
 	void PlayerMake(){
+		#if UNITY_EDITOR
 		PhotonNetwork.Instantiate ("Player",Vector3.zero,Quaternion.identity,0);
+		#endif
 	}
+	void OnGUI(){
+		//Photonのステータスをラベルで表示させています
+	
+		GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
+	
+	}
+
 }
