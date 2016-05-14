@@ -17,7 +17,7 @@ GameObject:
   - 114: {fileID: 11456934}
   m_Layer: 0
   m_Name: PCCamera
-  m_TagString: PCCamera
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60ee345d823dc44ee8964d5479b17b28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  train: {fileID: 0}
 --- !u!114 &11456934
 MonoBehaviour:
   m_ObjectHideFlags: 1

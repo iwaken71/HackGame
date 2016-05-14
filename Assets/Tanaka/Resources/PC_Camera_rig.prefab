@@ -12,6 +12,7 @@ GameObject:
   - 92: {fileID: 9285154}
   - 124: {fileID: 12475978}
   - 81: {fileID: 8127652}
+  - 45: {fileID: 4537938}
   m_Layer: 0
   m_Name: PCCamera
   m_TagString: Untagged
@@ -96,13 +97,21 @@ Camera:
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
   m_StereoMirrorMode: 0
+--- !u!45 &4537938
+Skybox:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 106702}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: 617d9be015db68348a623b01ea51a8c5, type: 2}
 --- !u!81 &8127652
 AudioListener:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 106702}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!92 &9285154
 Behaviour:
   m_ObjectHideFlags: 1
@@ -205,8 +214,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 11424426}
   ObservedComponentsFoldoutOpen: 1
-  viewIdField: 2
-  instantiationId: 2
+  viewIdField: 0
+  instantiationId: -1
   isRuntimeInstantiated: 0
 --- !u!124 &12475978
 Behaviour:

@@ -11,6 +11,7 @@ GameObject:
   - 20: {fileID: 2071476}
   - 124: {fileID: 12499454}
   - 114: {fileID: 11494962}
+  - 45: {fileID: 4543744}
   m_Layer: 0
   m_Name: Main Camera Right
   m_TagString: Untagged
@@ -98,6 +99,7 @@ GameObject:
   - 81: {fileID: 8173216}
   - 114: {fileID: 11413238}
   - 114: {fileID: 11421460}
+  - 45: {fileID: 4505622}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -167,6 +169,7 @@ GameObject:
   - 20: {fileID: 2099650}
   - 124: {fileID: 12470746}
   - 114: {fileID: 11410474}
+  - 45: {fileID: 4530130}
   m_Layer: 0
   m_Name: Main Camera Left
   m_TagString: Untagged
@@ -343,7 +346,7 @@ Camera:
   m_GameObject: {fileID: 101378}
   m_Enabled: 0
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -445,7 +448,7 @@ Camera:
   m_GameObject: {fileID: 116142}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -479,7 +482,7 @@ Camera:
   m_GameObject: {fileID: 148978}
   m_Enabled: 0
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
@@ -564,6 +567,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 112218}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!45 &4505622
+Skybox:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 116142}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: 617d9be015db68348a623b01ea51a8c5, type: 2}
+--- !u!45 &4530130
+Skybox:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 148978}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: 617d9be015db68348a623b01ea51a8c5, type: 2}
+--- !u!45 &4543744
+Skybox:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 101378}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 2100000, guid: 617d9be015db68348a623b01ea51a8c5, type: 2}
 --- !u!65 &6532474
 BoxCollider:
   m_ObjectHideFlags: 1

@@ -11,7 +11,7 @@ public class TrainMove : MonoBehaviour {
 
 	float startTime;
 
-	public int throughTime = 6;
+	public float throughTime = 6;
 
 	GameObject WayPoints;
 
