@@ -3,28 +3,28 @@ using System.Collections;
 
 public class FollowCamera : MonoBehaviour {
 
-	public Transform player;
+	public Transform train;
 	Vector3 offset;
 
 	// Use this for initialization
 	void Start () {
 		if (GameObject.FindGameObjectWithTag ("Train")!=null) {
-			player = GameObject.FindGameObjectWithTag ("Train").transform;
-
+			train = GameObject.FindGameObjectWithTag ("Train").transform;
+			this.transform.parent = train;
 		}
-		offset = new Vector3 (0,1,-7);
+		//offset = new Vector3 (0,1,-7);
 	
 	}
-	
+
 	// Update is called once per frame
 	void LateUpdate () {
-		if (player != null) {
-			transform.position = Vector3.Lerp (transform.position, player.position+offset, Time.deltaTime);
+		if (train != null) {
+			//transform.position = Vector3.Lerp (transform.position, train.position, Time.deltaTime);
 		} else {
 			if (GameObject.FindGameObjectWithTag ("Train")!=null) {
-				player = GameObject.FindGameObjectWithTag ("Train").transform;
+				train = GameObject.FindGameObjectWithTag ("Train").transform;
+				this.transform.parent = train;
 			}
 		}
 	}
-
 }

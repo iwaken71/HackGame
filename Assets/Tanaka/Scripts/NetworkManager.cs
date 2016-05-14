@@ -45,7 +45,7 @@ public class NetworkManager : Photon.MonoBehaviour {
 		#if UNITY_EDITOR
 		train = PhotonNetwork.Instantiate ("Train",Vector3.zero,Quaternion.identity,0) as GameObject;
 		player = PhotonNetwork.Instantiate ("Player",Vector3.zero,Quaternion.identity,0) as GameObject;
-		PhotonNetwork.Instantiate ("PCCamera",Vector3.zero,Quaternion.identity,0);
+		PhotonNetwork.Instantiate ("PC_Camera_rig",Vector3.zero,Quaternion.identity,0);
 		GameObject obj1 = player.transform.Find("CardboardMainHack").gameObject;
 
 
@@ -64,7 +64,7 @@ public class NetworkManager : Photon.MonoBehaviour {
 		*/
 		#endif
 		#if UNITY_EDITOR
-		photonView.RPC("JoinPCPlayer",PhotonTargets.Others);
+		//photonView.RPC("JoinPCPlayer",PhotonTargets.Others);
 		#endif
 
 	}
@@ -78,8 +78,8 @@ public class NetworkManager : Photon.MonoBehaviour {
 	[PunRPC]
 	void JoinPCPlayer(){
 		#if UNITY_IOS
-		GameManager.Instance.SetPCCamera (GameObject.FindGameObjectWithTag ("MainCamera"));
-		GameManager.Instance.SetiosCamera(GameObject.FindGameObjectWithTag ("iOSCamera"));
+		GameManager.Instance.SetPCCamera (GameObject.FindGameObjectWithTag ("PCCamera"));
+		GameManager.Instance.SetiosCamera(player.transform.Find("CardboardMainHack").gameObject);
 		#endif
 	}
 
