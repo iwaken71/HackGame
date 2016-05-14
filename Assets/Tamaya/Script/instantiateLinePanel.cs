@@ -21,6 +21,7 @@ public class instantiateLinePanel : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		WayPoints = GameObject.FindGameObjectWithTag ("WayPoints");
+
 	
 	}
 

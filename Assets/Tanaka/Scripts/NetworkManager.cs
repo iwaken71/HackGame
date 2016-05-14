@@ -4,12 +4,14 @@ using System.Collections;
 public class NetworkManager : Photon.MonoBehaviour {
 	PhotonView photonView;
 	GameObject train,player;
+	//Vector3 start_pos;
 
 	void Start ()
 	{
 		//photonを利用するための初期設定 ロビーを作成して入る？
 		PhotonNetwork.ConnectUsingSettings("0.1");
 		photonView = GetComponent<PhotonView> ();
+		//start_pos = GameObject.Find ("Start").transform.position;
 	}
 
 	//PhotonNetwork.ConnectUsingSettingsを行うと呼ばれる
@@ -43,9 +45,9 @@ public class NetworkManager : Photon.MonoBehaviour {
 
 	void PlayerMake(){
 		#if UNITY_EDITOR
-		train = PhotonNetwork.Instantiate ("Train",Vector3.zero,Quaternion.identity,0) as GameObject;
-		player = PhotonNetwork.Instantiate ("Player",Vector3.zero,Quaternion.identity,0) as GameObject;
-		PhotonNetwork.Instantiate ("PC_Camera_rig",Vector3.zero,Quaternion.identity,0);
+		train = PhotonNetwork.Instantiate ("Train",GameManager.Instance.GetStartPos(),Quaternion.identity,0) as GameObject;
+		player = PhotonNetwork.Instantiate ("Player",GameManager.Instance.GetStartPos(),Quaternion.identity,0) as GameObject;
+		PhotonNetwork.Instantiate ("PC_Camera_rig",GameManager.Instance.GetStartPos(),Quaternion.identity,0);
 		GameObject obj1 = player.transform.Find("CardboardMainHack").gameObject;
 
 

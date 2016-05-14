@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 using UniRx;
 
 public class GameManager : SingletonMonoBehaviour<GameManager>{
-
+	
 	GameObject pcCamera;
 	GameObject iosCamera;
 	PhotonView photonView;
@@ -12,14 +12,14 @@ public class GameManager : SingletonMonoBehaviour<GameManager>{
 	//ReactiveProperty<State> state = new ReactiveProperty<State>();
 	State state;
 	bool sceneStart = true;
-
+	Vector3 start_pos = new Vector3(7.63f,0,12.77f);
 
 	// trainManager
 	GameObject WayPoints;
 	static int index = 2;
 	public string[] linePanels = new string[3];
 	int currentAngle = 0; //0 to 7
-	public Vector3 currentCenterPositon;
+	private Vector3 currentCenterPositon;
 	public static float scale =1; 
 	private TrainSplineMove trainSplineMove;
 	// trainManager
@@ -35,12 +35,13 @@ public class GameManager : SingletonMonoBehaviour<GameManager>{
 		straight,
 		left
 	}
-
 	// Use this for initialization
 	void Start () {
 		state = State.Start;
 		sceneStart = true;
 		WayPoints = GameObject.FindGameObjectWithTag ("WayPoints");
+		start_pos = GameObject.Find ("Start").transform.position;
+		currentCenterPositon = start_pos;
 	}
 	
 	// Update is called once per frame
@@ -76,10 +77,6 @@ public class GameManager : SingletonMonoBehaviour<GameManager>{
 			if (pcCamera != null && iosCamera != null && photonView != null && player != null && train != null) {
 				SetState (State.Game);
 			}
-
-	
-
-
 			break;
 			// GameScene
 		case State.Game:
@@ -217,6 +214,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>{
 		if (iosCamera) {
 			iosCamera.SetActive (false);
 		}
-
+	}
+	public Vector3 GetStartPos(){
+		return start_pos;
 	}
 }

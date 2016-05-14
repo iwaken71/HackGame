@@ -11,9 +11,10 @@ GameObject:
   - 114: {fileID: 11417936}
   - 114: {fileID: 11493850}
   - 114: {fileID: 11468266}
+  - 136: {fileID: 13655882}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -355,6 +356,19 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &13655882
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 169976}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.05
+  m_Height: 0.24
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: -0.52}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

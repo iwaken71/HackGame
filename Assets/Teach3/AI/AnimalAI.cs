@@ -10,6 +10,8 @@ public class AnimalAI : MonoBehaviour {
 	public string AttackAnimation;
 	public string FeededAnimation;
 
+
+
 	public float fadeTime = 1;
 	public float speed = 0.2f;
 

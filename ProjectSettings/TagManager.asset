@@ -8,6 +8,7 @@ TagManager:
   - PCCamera
   - WayPoints
   - Train
+  - food
   layers:
   - Default
   - TransparentFX

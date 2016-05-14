@@ -31,6 +31,7 @@ public class TrainSplineMove : MonoBehaviour {
 	//For Rotation
 	private int countFromStart = 0;
 	private Vector3[] lastPosition;
+	//Vector3 start_pos;
 
 
 	// Use this for initialization
@@ -57,6 +58,8 @@ public class TrainSplineMove : MonoBehaviour {
 			vel_wayPoint[0],
 			vel_wayPoint[1]
 		};
+
+		//start_pos = GameObject.Find ("Start").transform.position;
 
 	}
 
