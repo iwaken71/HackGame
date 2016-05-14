@@ -12,11 +12,13 @@ public class PlayerAttack : Photon.MonoBehaviour {
 	void Update () {
 		if (Input.touchCount > 0) {
 			touchTime += Time.deltaTime;
+			#if UNITY_IOS
 			if (Input.touchCount == 1) {
 				if (canShot) {
 					ShotBullet ();
 				}
 			}
+			#endif
 		} else {
 			touchTime = 0;
 			if (canShot == false) {

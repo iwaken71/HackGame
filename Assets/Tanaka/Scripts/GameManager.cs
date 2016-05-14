@@ -81,8 +81,6 @@ public class GameManager : SingletonMonoBehaviour<GameManager>{
 		case State.Game:
 			if (sceneStart) {
 				sceneStart = false;
-
-
 			}
 
 			iosGameUpdate ();
