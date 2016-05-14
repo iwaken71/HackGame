@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 434dda5a15ee846bfb1cb1077d153638
+timeCreated: 1463259150
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - FadeParticle: {fileID: 163576, guid: ee0225946f8834f8d88a2811a84719f7, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

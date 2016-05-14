@@ -43,7 +43,7 @@ public class PlayerScript : MonoBehaviour {
 		if (train == null) {
 			if (GameObject.FindGameObjectWithTag ("Train")) {
 				train = GameObject.FindGameObjectWithTag ("Train");
-				transform.position = train.transform.position + new Vector3(0,1,0);
+				transform.position = train.transform.position + new Vector3(0,0.366f,0.136f);
 				this.transform.parent = train.transform;
 			}
 		} else {
