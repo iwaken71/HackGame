@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - iOSCamera
+  - PCCamera
   layers:
   - Default
   - TransparentFX

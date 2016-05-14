@@ -3,6 +3,7 @@ using System.Collections;
 
 public class NetworkManager : Photon.MonoBehaviour {
 	PhotonView photonView;
+	GameObject player;
 
 	void Start ()
 	{
@@ -42,16 +43,18 @@ public class NetworkManager : Photon.MonoBehaviour {
 
 	void PlayerMake(){
 		#if UNITY_EDITOR
-		PhotonNetwork.Instantiate ("Player",Vector3.zero,Quaternion.identity,0);
-		GameObject obj1 = PhotonNetwork.Instantiate ("iOSCamera",Vector3.zero,Quaternion.identity,0)as GameObject;
-		GameObject obj2 =  PhotonNetwork.Instantiate ("PCCamera",Vector3.zero,Quaternion.identity,0)as GameObject;
+		player = PhotonNetwork.Instantiate ("Player",Vector3.zero,Quaternion.identity,0) as GameObject;
+		GameObject obj2 = PhotonNetwork.Instantiate ("PCCamera",Vector3.zero,Quaternion.identity,0)as GameObject;
+		GameObject obj1 = player.transform.Find("CardboardMainHack").gameObject;
+		//GameObject obj2 =  PhotonNetwork.Instantiate ("PCCamera",Vector3.zero,Quaternion.identity,0)as GameObject;
 		GameManager.Instance.SetiosCamera (obj1);
 		GameManager.Instance.SetPCCamera (obj2);
 		#endif
 
 		#if UNITY_IOS
-		GameManager.Instance.SetPCCamera (GameObject.FindGameObjectWithTag ("MainCamera"));
-		GameManager.Instance.SetiosCamera(GameObject.FindGameObjectWithTag ("iOSCamera"));
+		player = GameObject.FindGameObjectWithTag("Player");
+		GameManager.Instance.SetPCCamera (GameObject.FindGameObjectWithTag ("PCCamera"));
+		GameManager.Instance.SetiosCamera(player.transform.Find("CardboardMainHack").gameObject);
 		#endif
 		#if UNITY_EDITOR
 		photonView.RPC("JoinPCPlayer",PhotonTargets.Others);

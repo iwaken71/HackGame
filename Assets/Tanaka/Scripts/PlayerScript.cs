@@ -3,11 +3,11 @@ using System.Collections;
 
 public class PlayerScript : MonoBehaviour {
 
-	Rigidbody rb;
+	//Rigidbody rb;
 
 	// Use this for initialization
 	void Start () {
-		rb = GetComponent<Rigidbody> ();
+		//rb = GetComponent<Rigidbody> ();
 
 		//rb.velocity = Vector3.forward;
 	
@@ -15,6 +15,7 @@ public class PlayerScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		transform.position += new Vector3 (0, transform.position.y, 1) * Time.deltaTime;
 
 		#if UNITY_IOS
 
@@ -34,16 +35,18 @@ public class PlayerScript : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
+		/*
 		if (GameManager.Instance.GetState () == GameManager.State.Game) {
 			Vector3 v = rb.velocity;
 			rb.velocity = new Vector3 (0, v.y, 1);
 		}
+*/
 
 
 	}
 
 	void Jump(){
-		rb.AddForce (Vector3.up * 10, ForceMode.Impulse);
+		//rb.AddForce (Vector3.up * 10, ForceMode.Impulse);
 	}
 
 }
