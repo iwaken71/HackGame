@@ -1,16 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UniRx;
 
 public class GameManager : SingletonMonoBehaviour<GameManager>{
 
 	GameObject pcCamera;
 	GameObject iosCamera;
 	PhotonView photonView;
+	//ReactiveProperty<State> state = new ReactiveProperty<State>();
 	State state;
-	ReactiveProperty<State> state = new ReactiveProperty<State>();
+	bool sceneStart = true;
 
-	enum State{
+	public enum State{
 		Start=0,
 		Game=1,
 		Rusult=2
@@ -18,38 +20,54 @@ public class GameManager : SingletonMonoBehaviour<GameManager>{
 
 	// Use this for initialization
 	void Start () {
-			pcCamera = GameObject.FindGameObjectWithTag ("MainCamera");
-			iosCamera = GameObject.FindGameObjectWithTag ("iOSCamera");
-			photonView = GameObject.Find ("NetworkManager").GetComponent<PhotonView> ();
-
-
+		state = State.Start;
+		sceneStart = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
-		if (SceneManager.GetActiveScene ().name == "Main") {
-			if (pcCamera && iosCamera) {
-				#if UNITY_IOS
-
-				pcCamera.SetActive (false);
-				iosCamera.SetActive (true);
-
-				#endif
-
-				#if UNITY_EDITOR
-				pcCamera.SetActive (true);
-				iosCamera.SetActive (false);
-				#endif
+		Debug.Log (state);
+		switch (state) {
+		case State.Start:
+			if (sceneStart) {
+				sceneStart = false;
 			}
-			#if UNITY_IOS
-			if (Input.touchCount > 0) {
-				if (Input.GetTouch (0).phase == TouchPhase.Began) {
-					//photonView.RPC();
-
-				}
+			if (pcCamera == null) {
+				pcCamera = GameObject.FindGameObjectWithTag ("MainCamera");
 			}
-			#endif
+			if (iosCamera == null) {
+				iosCamera = GameObject.FindGameObjectWithTag ("iOSCamera");
+			}
+			if (photonView == null) {
+				photonView = GameObject.Find ("NetworkManager").GetComponent<PhotonView> ();
+			}
+			if (pcCamera != null && iosCamera != null && photonView != null) {
+				SetState (State.Game);
+			}
+
+
+			break;
+			// GameScene
+		case State.Game:
+			if (sceneStart) {
+				sceneStart = false;
+
+
+			}
+
+			iosGameUpdate ();
+			pcGameUpdate ();
+
+			break;
+		case State.Rusult:
+			if (sceneStart) {
+				sceneStart = false;
+
+			}
+			break;
+		default:
+			break;
+
 		}
 	
 	}
@@ -60,5 +78,42 @@ public class GameManager : SingletonMonoBehaviour<GameManager>{
 	}
 	public void SetiosCamera(GameObject obj){
 		iosCamera = obj;
+	}
+	/*
+	public IObservable<State> GameStateAsObservable(){
+		return state.AsObservable ().Publish ().RefCount ();
+	}
+	*/
+	void iosGameUpdate(){
+		#if UNITY_IOS
+		if (pcCamera && iosCamera) {
+			pcCamera.SetActive (false);
+			iosCamera.SetActive (true);
+		}
+		if (Input.touchCount > 0) {
+			if (Input.GetTouch (0).phase == TouchPhase.Began) {
+				//photonView.RPC();
+			}
+		}
+		#endif
+	}
+	void pcGameUpdate(){
+		#if UNITY_EDITOR
+		if (pcCamera && iosCamera) {
+			pcCamera.SetActive (true);
+			iosCamera.SetActive (false);
+		}
+		#endif
+
+	}
+
+	public void SetState(State next){
+		state = next;
+		sceneStart = true;
+	}
+
+	public State GetState(){
+		return state;
+
 	}
 }

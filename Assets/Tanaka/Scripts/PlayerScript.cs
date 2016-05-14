@@ -8,7 +8,8 @@ public class PlayerScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody> ();
-		rb.velocity = Vector3.forward;
+
+		//rb.velocity = Vector3.forward;
 	
 	}
 	
@@ -33,8 +34,10 @@ public class PlayerScript : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
-		Vector3 v = rb.velocity;
-		rb.velocity = new Vector3 (0,v.y,1);
+		if (GameManager.Instance.GetState () == GameManager.State.Game) {
+			Vector3 v = rb.velocity;
+			rb.velocity = new Vector3 (0, v.y, 1);
+		}
 
 
 	}

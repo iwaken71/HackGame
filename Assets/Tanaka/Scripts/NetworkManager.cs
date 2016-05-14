@@ -55,7 +55,6 @@ public class NetworkManager : Photon.MonoBehaviour {
 		#endif
 		#if UNITY_EDITOR
 		photonView.RPC("JoinPCPlayer",PhotonTargets.Others);
-
 		#endif
 
 	}
