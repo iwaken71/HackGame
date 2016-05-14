@@ -4,18 +4,22 @@ using System.Collections;
 public class PlayerScript : MonoBehaviour {
 
 	//Rigidbody rb;
+	GameObject train;
 
 	// Use this for initialization
 	void Start () {
 		//rb = GetComponent<Rigidbody> ();
 
 		//rb.velocity = Vector3.forward;
+
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		transform.position += new Vector3 (0, transform.position.y, 1) * Time.deltaTime;
+		//transform.position += new Vector3 (0, transform.position.y, 1) * Time.deltaTime;
+			
+
 
 		#if UNITY_IOS
 
@@ -29,6 +33,14 @@ public class PlayerScript : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.Return)) {
 			Jump ();
 		}
+		if (train == null) {
+			if (GameObject.FindGameObjectWithTag ("Train")) {
+				train = GameObject.FindGameObjectWithTag ("Train");
+			}
+		} else {
+			transform.position = train.transform.position + new Vector3(0,1,0);
+		}
+
 		#endif
 
 	

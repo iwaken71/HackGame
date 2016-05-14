@@ -8,8 +8,8 @@ public class FollowCamera : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		if (GameObject.FindGameObjectWithTag ("Player")!=null) {
-			player = GameObject.FindGameObjectWithTag ("Player").transform;
+		if (GameObject.FindGameObjectWithTag ("Train")!=null) {
+			player = GameObject.FindGameObjectWithTag ("Train").transform;
 
 		}
 		offset = new Vector3 (0,1,-7);
@@ -18,17 +18,12 @@ public class FollowCamera : MonoBehaviour {
 	
 	// Update is called once per frame
 	void LateUpdate () {
-		transform.position = Vector3.Lerp (transform.position, player.position+offset, Time.deltaTime);
-		Debug.Log (transform.position);
 		if (player != null) {
 			transform.position = Vector3.Lerp (transform.position, player.position+offset, Time.deltaTime);
-			Debug.Log (transform.position);
 		} else {
-			if (GameObject.FindGameObjectWithTag ("Player")!=null) {
-				player = GameObject.FindGameObjectWithTag ("Player").transform;
-
+			if (GameObject.FindGameObjectWithTag ("Train")!=null) {
+				player = GameObject.FindGameObjectWithTag ("Train").transform;
 			}
-
 		}
 	}
 

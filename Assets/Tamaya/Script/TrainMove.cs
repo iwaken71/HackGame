@@ -33,17 +33,19 @@ public class TrainMove : MonoBehaviour {
 	}
 
 	void FixedUpdate(){
+		if (GameManager.Instance.GetState () == GameManager.State.Game) {
 
-		float deltaTime = Time.time - startTime;
+			float deltaTime = Time.time - startTime;
 
-		if (deltaTime <= throughTime / 2) {
-			transform.position = Vector3.Lerp (FromPoint, MiddlePoint, deltaTime / (throughTime / 2));
-			transform.LookAt (MiddlePoint);
-		} else if (deltaTime <= throughTime) {
-			transform.position = Vector3.Lerp (MiddlePoint, ToPoint, (deltaTime - throughTime / 2) / (throughTime / 2));
-			transform.LookAt (ToPoint);
-		} else {
-			UpdateDirections ();
+			if (deltaTime <= throughTime / 2) {
+				transform.position = Vector3.Lerp (FromPoint, MiddlePoint, deltaTime / (throughTime / 2));
+				transform.LookAt (MiddlePoint);
+			} else if (deltaTime <= throughTime) {
+				transform.position = Vector3.Lerp (MiddlePoint, ToPoint, (deltaTime - throughTime / 2) / (throughTime / 2));
+				transform.LookAt (ToPoint);
+			} else {
+				UpdateDirections ();
+			}
 		}
 
 	}

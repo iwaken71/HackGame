@@ -85,60 +85,6 @@ NavMeshSettings:
     cellSize: 0.16666667
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!1001 &181336893
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 466088, guid: 2764a4a87d666435397517ef13845fb5, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 466088, guid: 2764a4a87d666435397517ef13845fb5, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 466088, guid: 2764a4a87d666435397517ef13845fb5, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 466088, guid: 2764a4a87d666435397517ef13845fb5, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 466088, guid: 2764a4a87d666435397517ef13845fb5, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 466088, guid: 2764a4a87d666435397517ef13845fb5, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 466088, guid: 2764a4a87d666435397517ef13845fb5, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 466088, guid: 2764a4a87d666435397517ef13845fb5, type: 2}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 136618, guid: 2764a4a87d666435397517ef13845fb5, type: 2}
-      propertyPath: m_Name
-      value: Train
-      objectReference: {fileID: 0}
-    - target: {fileID: 11406392, guid: 2764a4a87d666435397517ef13845fb5, type: 2}
-      propertyPath: viewIdField
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 11406392, guid: 2764a4a87d666435397517ef13845fb5, type: 2}
-      propertyPath: instantiationId
-      value: 2
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 2764a4a87d666435397517ef13845fb5, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &333451886
 GameObject:
   m_ObjectHideFlags: 0
@@ -397,7 +343,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 465426, guid: 6d6b63d84f2b64dfb92ac53d633ba9d7, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 11495410, guid: 6d6b63d84f2b64dfb92ac53d633ba9d7, type: 2}
       propertyPath: Waypoints
@@ -494,7 +440,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!1 &1792791894
 GameObject:
   m_ObjectHideFlags: 0

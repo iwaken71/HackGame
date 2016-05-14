@@ -7,6 +7,7 @@ TagManager:
   - iOSCamera
   - PCCamera
   - WayPoints
+  - Train
   layers:
   - Default
   - TransparentFX

@@ -8,6 +8,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>{
 	GameObject pcCamera;
 	GameObject iosCamera;
 	PhotonView photonView;
+	GameObject train,player;
 	//ReactiveProperty<State> state = new ReactiveProperty<State>();
 	State state;
 	bool sceneStart = true;
@@ -16,7 +17,6 @@ public class GameManager : SingletonMonoBehaviour<GameManager>{
 	// trainManager
 	GameObject WayPoints;
 	static int index = 2;
-
 	public string[] linePanels = new string[3];
 	int currentAngle = 0; //0 to 7
 	public Vector3 currentCenterPositon;
@@ -51,17 +51,29 @@ public class GameManager : SingletonMonoBehaviour<GameManager>{
 				sceneStart = false;
 			}
 			if (pcCamera == null) {
-				pcCamera = GameObject.FindGameObjectWithTag ("MainCamera");
+				pcCamera = GameObject.FindGameObjectWithTag ("PCCamera");
 			}
 			if (iosCamera == null) {
-				iosCamera = GameObject.FindGameObjectWithTag ("iOSCamera");
+				if (player != null) {
+					iosCamera = player.transform.Find ("CardboardMainHack").gameObject;
+				}
 			}
 			if (photonView == null) {
 				photonView = GameObject.Find ("NetworkManager").GetComponent<PhotonView> ();
 			}
-			if (pcCamera != null && iosCamera != null && photonView != null) {
+			if (train == null) {
+				train = GameObject.FindGameObjectWithTag ("Train");
+			}
+			if (player == null) {
+				player = GameObject.FindGameObjectWithTag ("Player");
+			}
+
+
+			if (pcCamera != null && iosCamera != null && photonView != null && player != null && train != null) {
 				SetState (State.Game);
 			}
+
+	
 
 
 			break;
@@ -97,6 +109,13 @@ public class GameManager : SingletonMonoBehaviour<GameManager>{
 	}
 	public void SetiosCamera(GameObject obj){
 		iosCamera = obj;
+	}
+	public void SetTrain(GameObject obj){
+		train = obj;
+	}
+
+	public void SetPlayer(GameObject obj){
+		player = obj;
 	}
 	/*
 	public IObservable<State> GameStateAsObservable(){
@@ -174,5 +193,15 @@ public class GameManager : SingletonMonoBehaviour<GameManager>{
 			UpdateCurrentAngle (1);
 		}
 		#endif
+	}
+
+	void offCamera(){
+		if (pcCamera) {
+			pcCamera.SetActive (false);
+		}
+		if (iosCamera) {
+			iosCamera.SetActive (false);
+		}
+
 	}
 }
