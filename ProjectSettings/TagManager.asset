@@ -9,6 +9,7 @@ TagManager:
   - WayPoints
   - Train
   - food
+  - Goal
   layers:
   - Default
   - TransparentFX

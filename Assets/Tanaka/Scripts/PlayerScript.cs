@@ -22,10 +22,11 @@ public class PlayerScript : MonoBehaviour {
 
 
 		#if UNITY_IOS
-
+		/*
 		if (Input.GetMouseButtonDown (0)) {
 			Jump();
 		}
+		*/
 		if (train == null) {
 			if (GameObject.FindGameObjectWithTag ("Train")) {
 				train = GameObject.FindGameObjectWithTag ("Train");
