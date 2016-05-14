@@ -41,7 +41,6 @@ public class PlayerScript : MonoBehaviour {
 
 	void Jump(){
 		rb.AddForce (Vector3.up * 10, ForceMode.Impulse);
-
 	}
 
 }

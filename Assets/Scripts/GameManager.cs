@@ -5,12 +5,17 @@ public class GameManager : SingletonMonoBehaviour<GameManager>{
 
 	GameObject pcCamera;
 	GameObject iosCamera;
+	PhotonView photonView;
 
 	// Use this for initialization
 	void Start () {
 		pcCamera = GameObject.FindGameObjectWithTag ("MainCamera");
 		iosCamera =  GameObject.FindGameObjectWithTag ("iOSCamera");
+		photonView = GameObject.Find ("NetworkManager").GetComponent<PhotonView>();
+		#if UNITY_EDITOR
+		photonView.RPC("JoinPCPlayer",PhotonTargets.Others);
 
+		#endif
 	}
 	
 	// Update is called once per frame

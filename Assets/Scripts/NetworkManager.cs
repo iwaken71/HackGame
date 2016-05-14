@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class RoomManager : Photon.MonoBehaviour {
+public class NetworkManager : Photon.MonoBehaviour {
+	PhotonView photonView;
 
 	void Start ()
 	{
 		//photonを利用するための初期設定 ロビーを作成して入る？
 		PhotonNetwork.ConnectUsingSettings("0.1");
+		photonView = GetComponent<PhotonView> ();
 	}
 
 	//PhotonNetwork.ConnectUsingSettingsを行うと呼ばれる
@@ -26,6 +28,13 @@ public class RoomManager : Photon.MonoBehaviour {
 	//ルームに入室成功
 	void OnJoinedRoom()
 	{
+		/*
+		#if UNITY_EDITOR
+		photonView.RPC("JoinPCPlayer",PhotonTargets.Others);
+
+		#endif
+		*/
+
 		//キャラクター作成
 		PlayerMake ();
 
@@ -51,6 +60,14 @@ public class RoomManager : Photon.MonoBehaviour {
 	
 		GUILayout.Label(PhotonNetwork.connectionStateDetailed.ToString());
 	
+	}
+
+	[PunRPC]
+	void JoinPCPlayer(){
+		#if UNITY_IOS
+		GameManager.Instance.SetPCCamera (GameObject.FindGameObjectWithTag ("MainCamera"));
+		GameManager.Instance.SetiosCamera(GameObject.FindGameObjectWithTag ("iOSCamera"));
+		#endif
 	}
 
 }

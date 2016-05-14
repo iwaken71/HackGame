@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Name: PhotonServerSettings
   m_EditorClassIdentifier: 
   HostType: 1
-  Protocol: 1
+  Protocol: 0
   ServerAddress: 
   ServerPort: 5055
   AppID: 23a4ccf8-79cc-4fcc-b388-1d50ee7aba24
   PreferredRegion: 3
   EnabledRegions: -1
   JoinLobby: 1
-  EnableLobbyStatistics: 1
+  EnableLobbyStatistics: 0
   RpcList:
   - Chat
   - ColorRpc
@@ -37,4 +37,5 @@ MonoBehaviour:
   - RequestForPickupTimes
   - TaggedPlayer
   - SetiosCamera
+  - JoinPCPlayer
   DisableAutoOpenWizard: 1
