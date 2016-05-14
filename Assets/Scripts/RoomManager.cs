@@ -40,6 +40,10 @@ public class RoomManager : Photon.MonoBehaviour {
 		GameManager.Instance.SetPCCamera (obj2);
 		#endif
 
+		#if UNITY_IOS
+		GameManager.Instance.SetPCCamera (GameObject.FindGameObjectWithTag ("MainCamera"));
+		GameManager.Instance.SetiosCamera(GameObject.FindGameObjectWithTag ("iOSCamera"));
+		#endif
 
 	}
 	void OnGUI(){

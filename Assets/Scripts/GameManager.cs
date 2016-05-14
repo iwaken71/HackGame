@@ -38,6 +38,5 @@ public class GameManager : SingletonMonoBehaviour<GameManager>{
 	}
 	public void SetiosCamera(GameObject obj){
 		iosCamera = obj;
-
 	}
 }

@@ -12,14 +12,15 @@ public class iOSCamera : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void LateUpdate () {
 		if (target == null) {
 			if (GameObject.FindGameObjectWithTag ("Player") != null) {
 				target = GameObject.FindGameObjectWithTag ("Player").transform;
 			}
 		}
 		if (target != null) {
-			transform.LookAt (target);
+			transform.position = target.position + new Vector3 (0,1,0);
+			//transform.LookAt (target);
 		}
 	
 	}
