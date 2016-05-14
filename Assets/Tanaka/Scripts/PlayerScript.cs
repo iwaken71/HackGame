@@ -29,7 +29,7 @@ public class PlayerScript : MonoBehaviour {
 		if (train == null) {
 			if (GameObject.FindGameObjectWithTag ("Train")) {
 				train = GameObject.FindGameObjectWithTag ("Train");
-				transform.position = train.transform.position + new Vector3(0,1,0);
+				transform.position = train.transform.position + new Vector3(0,0.2f,0);
 				this.transform.parent = train.transform;
 			}
 		}
