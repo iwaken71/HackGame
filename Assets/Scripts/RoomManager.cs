@@ -34,7 +34,13 @@ public class RoomManager : Photon.MonoBehaviour {
 	void PlayerMake(){
 		#if UNITY_EDITOR
 		PhotonNetwork.Instantiate ("Player",Vector3.zero,Quaternion.identity,0);
+		GameObject obj1 = PhotonNetwork.Instantiate ("iOSCamera",Vector3.zero,Quaternion.identity,0)as GameObject;
+		GameObject obj2 =  PhotonNetwork.Instantiate ("PCCamera",Vector3.zero,Quaternion.identity,0)as GameObject;
+		GameManager.Instance.SetiosCamera (obj1);
+		GameManager.Instance.SetPCCamera (obj2);
 		#endif
+
+
 	}
 	void OnGUI(){
 		//Photonのステータスをラベルで表示させています
