@@ -105,12 +105,12 @@ public class GameManager : MonoBehaviour{
 				player = GameObject.FindGameObjectWithTag ("Player");
 				Debug.Log ("player");
 			}
-			if (start_pos == null) {
-				if (GameObject.Find ("Start") != null) {
-					start_pos = GameObject.Find ("Start").transform.position;
-					Debug.Log ("start_pos");
-				}
-			}
+
+			//if (GameObject.Find ("Start") != null) {
+				//start_pos = GameObject.Find ("Start").transform.position;
+				//Debug.Log ("start_pos");
+			//}
+
 			if (fukanCamera == null) {
 				fukanCamera = GameObject.FindGameObjectWithTag ("FukanCamera");
 				if (Application.platform == RuntimePlatform.IPhonePlayer) {
@@ -151,7 +151,6 @@ public class GameManager : MonoBehaviour{
 		case State.Rusult:
 			if (sceneStart) {
 				sceneStart = false;
-
 			}
 			break;
 		default:
@@ -184,33 +183,33 @@ public class GameManager : MonoBehaviour{
 	}
 	*/
 	void iosGameUpdate(){
-		if (Application.platform == RuntimePlatform.IPhonePlayer) {
-			if (pcCamera && iosCamera && fukanCamera && WebUI3) {
-				pcCamera.SetActive (false);
-				iosCamera.SetActive (true);
-				fukanCamera.SetActive (false);
-				WebUI3.SetActive (false);
-			}
+		#if UNITY_IOS
+		if (pcCamera && iosCamera && fukanCamera && WebUI3) {
+			pcCamera.SetActive (false);
+			iosCamera.SetActive (true);
+			fukanCamera.SetActive (false);
+			WebUI3.SetActive (false);
+		}
 
-			if (Input.touchCount > 0) {
-				if (Input.GetTouch (0).phase == TouchPhase.Began) {
-					//photonView.RPC();
-				}
+		if (Input.touchCount > 0) {
+			if (Input.GetTouch (0).phase == TouchPhase.Began) {
+				//photonView.RPC();
 			}
 		}
+		#endif
 	}
+
+
 	void pcGameUpdate(){
-		if (Application.platform == RuntimePlatform.OSXEditor)
+		#if UNITY_IOS
 		if (pcCamera && iosCamera && fukanCamera && WebUI3) {
 			pcCamera.SetActive (true);
 			iosCamera.SetActive (false);
 			fukanCamera.SetActive (true);
 			WebUI3.SetActive (true);
 		}
+		#endif
 	}
-
-
-
 	public void SetState(State next){
 		state = next;
 		sceneStart = true;
@@ -218,7 +217,6 @@ public class GameManager : MonoBehaviour{
 
 	public State GetState(){
 		return state;
-
 	}
 	void Spawn(int dir){
 

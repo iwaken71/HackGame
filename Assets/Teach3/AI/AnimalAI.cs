@@ -44,7 +44,7 @@ public class AnimalAI : MonoBehaviour {
 	
 	}
 
-	void OnTriggerEnter (Collider col ) {
+	void OnTriggerEnter (Collider col) {
 
 		if (col.transform.tag == "PlayerSpace") {
 

@@ -681,7 +681,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 108478}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.412, y: 0.015, z: 11.192}
+  m_LocalPosition: {x: 1.3024158, y: -7.4108577, z: -3.4098558}
   m_LocalScale: {x: 0.24456942, y: 0.24456933, z: 0.24456933}
   m_Children:
   - {fileID: 418100}
@@ -892,10 +892,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveAnimation: walk
-  AttackAnimation: 61747461636b
-  FeededAnimation: 61747461636b32
+  AttackAnimation: attack
+  FeededAnimation: attack2
   fadeTime: 2
-  speed: 0.2
+  speed: 0.44
   heartFx: {fileID: 107976, guid: 8527bfb2f40264aaebfd3fc38b282148, type: 2}
 --- !u!114 &11484762
 MonoBehaviour:

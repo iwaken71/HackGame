@@ -13,6 +13,7 @@ TagManager:
   - Rock
   - FukanCamera
   - Canvas
+  - PlayerSpace
   layers:
   - Default
   - TransparentFX
