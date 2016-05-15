@@ -39,4 +39,5 @@ MonoBehaviour:
   - SetiosCamera
   - JoinPCPlayer
   - SendMes
+  - ChangeScene
   DisableAutoOpenWizard: 1

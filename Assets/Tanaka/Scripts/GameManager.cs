@@ -40,7 +40,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>{
 		state = State.Start;
 		sceneStart = true;
 		WayPoints = GameObject.FindGameObjectWithTag ("WayPoints");
-		start_pos = GameObject.Find ("Start").transform.position;
+		//start_pos = GameObject.Find ("Start").transform.position;
 		currentCenterPositon = start_pos;
 	}
 
@@ -72,11 +72,18 @@ public class GameManager : SingletonMonoBehaviour<GameManager>{
 			if (player == null) {
 				player = GameObject.FindGameObjectWithTag ("Player");
 			}
+			if (start_pos == null) {
+				if (GameObject.Find ("Start") != null) {
+					start_pos = GameObject.Find ("Start").transform.position;
+				}
+			}
 
 
 			if (pcCamera != null && iosCamera != null && photonView != null && player != null && train != null) {
 				SetState (State.Game);
 			}
+
+
 			break;
 			// GameScene
 		case State.Game:
@@ -116,6 +123,8 @@ public class GameManager : SingletonMonoBehaviour<GameManager>{
 	public void SetPlayer(GameObject obj){
 		player = obj;
 	}
+
+
 	/*
 	public IObservable<State> GameStateAsObservable(){
 		return state.AsObservable ().Publish ().RefCount ();
@@ -219,5 +228,12 @@ public class GameManager : SingletonMonoBehaviour<GameManager>{
 	}
 	public Vector3 GetStartPos(){
 		return start_pos;
+	}
+
+	public void SetScene(string name){
+		if (SceneManager.GetActiveScene ().name == "Title_scene") {
+
+		}
+		SceneManager.LoadScene (name);
 	}
 }

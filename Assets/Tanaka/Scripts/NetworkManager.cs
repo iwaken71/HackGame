@@ -1,20 +1,30 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
-public class NetworkManager : Photon.MonoBehaviour {
+public class NetworkManager : Photon.MonoBehaviour{
 	PhotonView photonView;
 	GameObject train,player;
 	//Vector3 start_pos;
 
+	public static NetworkManager Instance;
+
+	void Awake(){
+		if (Instance == null) {
+			Instance = this;
+			DontDestroyOnLoad (this.gameObject);
+		} else {
+			Destroy (this.gameObject);
+		}
+	}
 	void Start ()
 	{
 		//photonを利用するための初期設定 ロビーを作成して入る？
 		PhotonNetwork.ConnectUsingSettings("0.1");
 		photonView = GetComponent<PhotonView> ();
 		//start_pos = GameObject.Find ("Start").transform.position;
-		if (PhotonNetwork.connectionStateDetailed == PeerState.Joined) {
+		if (PhotonNetwork.connectionStateDetailed == PeerState.Joined && SceneManager.GetActiveScene().name == "Main"){ 
 			PlayerMake ();
-
 		}
 	}
 
@@ -43,7 +53,7 @@ public class NetworkManager : Photon.MonoBehaviour {
 		*/
 
 		//キャラクター作成
-		PlayerMake ();
+		//PlayerMake ();
 
 	}
 
@@ -90,8 +100,8 @@ public class NetworkManager : Photon.MonoBehaviour {
 	}
 
 	[PunRPC]
-	void SendMes(){
-
+	void ChangeScene(string sceneName){
+		SceneManager.LoadScene(sceneName);
 	}
 
 }
