@@ -2621,7 +2621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scale: 30
-  speed: 360
+  speed: 36000
 --- !u!114 &11474558
 MonoBehaviour:
   m_ObjectHideFlags: 1
