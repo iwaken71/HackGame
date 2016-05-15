@@ -104,10 +104,10 @@ public class TrainSplineMove : MonoBehaviour {
 				Debug.Log ("UpdateWayPoint");
 				arriveWayPointCount += 1;
 				t = 0;
-				Debug.Log ("aP:"+arriveWayPointCount);
+		//		Debug.Log ("aP:"+arriveWayPointCount);
 				UpdateWayPoint (arriveWayPointCount);
 			} else {
-				Debug.Log ("a");
+			//	Debug.Log ("a");
 				canMove = false;
 				countFromStart = 0;
 			}
