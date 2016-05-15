@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 using UniRx;
 
-public class GameManager : SingletonMonoBehaviour<GameManager>{
+public class GameManager : MonoBehaviour{
 
 	GameObject pcCamera;
 	GameObject iosCamera;
@@ -24,6 +24,17 @@ public class GameManager : SingletonMonoBehaviour<GameManager>{
 	private TrainSplineMove trainSplineMove;
 	// trainManager
 
+	static public GameManager  Instance = null;
+
+	void Awake(){
+		if (Instance == null) {
+			Instance = this;
+			DontDestroyOnLoad (this.gameObject);
+		} else {
+			Destroy (this.gameObject);
+		}
+	}
+
 	public enum State{
 		Start=0,
 		Game=1,
@@ -39,7 +50,6 @@ public class GameManager : SingletonMonoBehaviour<GameManager>{
 	void Start () {
 		state = State.Start;
 		sceneStart = true;
-
 	}
 
 	// Update is called once per frame
@@ -234,13 +244,40 @@ public class GameManager : SingletonMonoBehaviour<GameManager>{
 		return start_pos;
 	}
 
+
 	public void SetScene(string name){
 		if (SceneManager.GetActiveScene ().name == "Title_scene") {
 			if (name == "Main") {
 				//NetworkManager.Instance.PlayerMake ();
-			}
+				if (PhotonNetwork.connectionStateDetailed != PeerState.Joined) {
+					return;
+				}
+				/*
+				#if UNITY_IOS
+				if (PhotonNetwork.countOfPlayersInRooms <= 1) {
+					return;
+				}
 
+				#endif
+				*/
+
+
+				photonView.RPC ("RPCSetScene", PhotonTargets.Others, name);
+			}
 		}
+		if (name == "Result_Failed") {
+			photonView.RPC("RPCSetScene",PhotonTargets.Others,name);
+			state = State.Start;
+		}
+		if (name == "Clear") {
+			photonView.RPC("Clear",PhotonTargets.Others,name);
+			state = State.Start;
+		}
+		if (name == "Title_scene") {
+			photonView.RPC("Title_scene",PhotonTargets.Others,name);
+			state = State.Start;
+		}
+
 		SceneManager.LoadScene (name);
 	}
 }

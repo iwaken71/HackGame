@@ -12,10 +12,11 @@ public class ClearChangeScene : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.JoystickButton17)) {
-			SceneManager.LoadScene ("Title_scene");
+			GameManager.Instance.SetScene ("Title_scene");
+			//SceneManager.LoadScene ("Title_scene");
 		}
 		if (Input.GetKeyDown (KeyCode.Space)) {
-			SceneManager.LoadScene ("Title_scene");
+			GameManager.Instance.SetScene ("Title_scene");
 		}
 	
 	}

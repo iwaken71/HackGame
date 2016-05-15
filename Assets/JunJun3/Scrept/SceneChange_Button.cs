@@ -15,6 +15,7 @@ public class SceneChange_Button : MonoBehaviour {
 	}
 
 	public void GameScene(){
-		SceneManager.LoadScene ("Title_scene");
+		GameManager.Instance.SetScene ("Title_scene");
+		//SceneManager.LoadScene ("Title_scene");
 	}
 }

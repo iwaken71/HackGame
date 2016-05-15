@@ -40,4 +40,5 @@ MonoBehaviour:
   - JoinPCPlayer
   - SendMes
   - ChangeScene
+  - RPCSetScene
   DisableAutoOpenWizard: 1

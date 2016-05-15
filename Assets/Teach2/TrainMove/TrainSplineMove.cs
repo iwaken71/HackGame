@@ -98,8 +98,8 @@ public class TrainSplineMove : MonoBehaviour {
 			player.transform.position = GetPosition (t);
 		} else {
 			player.transform.position = GetPosition (1);
-			Debug.Log (wayPointsParent.transform.childCount);
-			Debug.Log (arriveWayPointCount);
+		//	Debug.Log (wayPointsParent.transform.childCount);
+		//	Debug.Log (arriveWayPointCount);
 			if (wayPointsParent.transform.childCount > (arriveWayPointCount+2)) {
 				Debug.Log ("UpdateWayPoint");
 				arriveWayPointCount += 1;
@@ -115,7 +115,7 @@ public class TrainSplineMove : MonoBehaviour {
 	}
 
 	void UpdateWayPoint(int count){
-		Debug.Log ("count:"+count);
+		//Debug.Log ("count:"+count);
 		int nextCount = count+1;
 
 		pos_wayPoint [0] = pos_wayPoint [1];
@@ -125,9 +125,9 @@ public class TrainSplineMove : MonoBehaviour {
 		pos_wayPoint [1] = wayPoints[nextCount].position;
 		velPoints[nextCount] = wayPoints[nextCount].FindChild("VelPoint");
 		vel_wayPoint[1] = speed*(velPoints[nextCount].position - wayPoints[nextCount].position).normalized;
-		Debug.Log (nextCount);
-		Debug.Log (pos_wayPoint [0]);
-		Debug.Log (pos_wayPoint [1]);
+		//Debug.Log (nextCount);
+		//Debug.Log (pos_wayPoint [0]);
+		//Debug.Log (pos_wayPoint [1]);
 		orbit = new Vector3[4]{
 			pos_wayPoint[0],
 			pos_wayPoint[1],

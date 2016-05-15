@@ -20,6 +20,7 @@ public class NetworkManager : Photon.MonoBehaviour{
 	void Start ()
 	{
 		//photonを利用するための初期設定 ロビーを作成して入る？
+		Debug.Log(SceneManager.GetActiveScene().name);
 		PhotonNetwork.ConnectUsingSettings("0.1");
 		photonView = GetComponent<PhotonView> ();
 		//start_pos = GameObject.Find ("Start").transform.position;
@@ -102,6 +103,10 @@ public class NetworkManager : Photon.MonoBehaviour{
 	[PunRPC]
 	void ChangeScene(string sceneName){
 		SceneManager.LoadScene(sceneName);
+	}
+	[PunRPC]
+	public void RPCSetScene(string name){
+		SceneManager.LoadScene (name);
 	}
 
 }
