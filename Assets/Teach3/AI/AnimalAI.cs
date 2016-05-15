@@ -14,11 +14,13 @@ public class AnimalAI : MonoBehaviour {
 	public float speed = 3;
 
 	public GameObject heartFx;
+	Transform target;
 	//public GameObject fadeFx;
 
 	// Use this for initialization
 	void Start () {
 		animation.Play (MoveAnimation);
+
 	}
 
 	void Awake () {
@@ -31,6 +33,12 @@ public class AnimalAI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (target == null) {
+			if (GameObject.FindGameObjectWithTag ("Train")) {
+				target = GameObject.FindGameObjectWithTag ("Train").transform;
+			}
+
+		}
 
 		MoveTo ();
 	
@@ -76,6 +84,11 @@ public class AnimalAI : MonoBehaviour {
 	}
 
 	void MoveTo (){
+
+		Vector3 direction = (target.position - transform.position).normalized;
+
+		transform.position += direction * speed * Time.deltaTime;
+		transform.LookAt (target.position);
 
 		//ここでプレーヤーを探す処理
 

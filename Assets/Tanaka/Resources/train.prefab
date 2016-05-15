@@ -211,6 +211,7 @@ GameObject:
   - 114: {fileID: 11412438}
   - 114: {fileID: 11405736}
   - 114: {fileID: 11474558}
+  - 114: {fileID: 11454878}
   m_Layer: 0
   m_Name: train
   m_TagString: Train
@@ -2608,6 +2609,19 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &11454878
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 136618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a28287502fa57469480c2c33801c9682, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scale: 30
+  speed: 360
 --- !u!114 &11474558
 MonoBehaviour:
   m_ObjectHideFlags: 1
