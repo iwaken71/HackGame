@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 using UniRx;
 
 public class GameManager : SingletonMonoBehaviour<GameManager>{
-	
+
 	GameObject pcCamera;
 	GameObject iosCamera;
 	PhotonView photonView;
@@ -43,7 +43,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>{
 		start_pos = GameObject.Find ("Start").transform.position;
 		currentCenterPositon = start_pos;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		Debug.Log (state);
@@ -99,7 +99,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>{
 			break;
 
 		}
-	
+
 	}
 
 	public void SetPCCamera(GameObject obj){
@@ -155,9 +155,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>{
 	}
 	void Spawn(int dir){
 
-		GameObject that = PhotonNetwork.Instantiate (linePanels[dir+1], currentCenterPositon + scale*Vector3.forward, Quaternion.Euler(new Vector3(0,0,0)),0)as GameObject;
+		GameObject that = PhotonNetwork.Instantiate (linePanels [dir + 1], currentCenterPositon + scale * Vector3.forward, Quaternion.Euler (new Vector3 (0, 0, 0)), 0)as GameObject;
 
-		that.transform.RotateAround(currentCenterPositon, Vector3.up, currentAngle * 45 );
+		that.transform.RotateAround (currentCenterPositon, Vector3.up, currentAngle * 45);
 
 		Transform waypoint = that.transform.FindChild ("Waypoint");
 		waypoint.name += index.ToString ();
@@ -167,9 +167,11 @@ public class GameManager : SingletonMonoBehaviour<GameManager>{
 		currentCenterPositon = that.transform.position;
 
 		//StartMove
+
 		if (trainSplineMove.GetCanMove () == false) {
 			trainSplineMove.StartMove ();
 		}
+
 
 	}
 

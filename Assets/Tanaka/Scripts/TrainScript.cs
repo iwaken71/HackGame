@@ -20,5 +20,12 @@ public class TrainScript : MonoBehaviour {
 
 		}
 
+		if (col.tag == "Rock") {
+			SceneManager.LoadScene ("Result_Failed");
+
+		}
+
 	}
+
+
 }

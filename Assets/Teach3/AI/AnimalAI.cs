@@ -6,25 +6,19 @@ public class AnimalAI : MonoBehaviour {
 
 	Animation animation;
 
-	private string MoveAnimation = "walk";
+	public string MoveAnimation;
 	public string AttackAnimation;
 	public string FeededAnimation;
 
-
-
 	public float fadeTime = 1;
-	public float speed = 0.2f;
+	public float speed = 3;
 
 	public GameObject heartFx;
-
-	Transform train;
 	//public GameObject fadeFx;
 
 	// Use this for initialization
 	void Start () {
-		if (GameObject.FindGameObjectWithTag ("Train")) {
-			train = GameObject.FindGameObjectWithTag ("Train").transform;
-		}
+	
 	}
 
 	void Awake () {
@@ -37,16 +31,12 @@ public class AnimalAI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (train == null) {
-			if (GameObject.FindGameObjectWithTag ("Train")) {
-				train = GameObject.FindGameObjectWithTag ("Train").transform;
-			}
-		}
+
 		MoveTo ();
 	
 	}
 
-	void OnTriggerEnter (Collider col) {
+	void OnTriggerEnter (Collider col ) {
 		Debug.Log (col.name);
 
 		if (col.transform.tag == "PlayerSpace") {
@@ -86,11 +76,7 @@ public class AnimalAI : MonoBehaviour {
 	}
 
 	void MoveTo (){
-		if (train) {
-			Vector3 direction = (train.position - transform.position).normalized;
-			transform.position += direction * Time.deltaTime * speed;
-			transform.LookAt (train.position);
-		}
+
 		//ここでプレーヤーを探す処理
 
 	}

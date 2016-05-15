@@ -10,6 +10,7 @@ TagManager:
   - Train
   - food
   - Goal
+  - Rock
   layers:
   - Default
   - TransparentFX
