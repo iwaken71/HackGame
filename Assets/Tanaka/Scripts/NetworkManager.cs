@@ -7,7 +7,7 @@ public class NetworkManager : Photon.MonoBehaviour{
 	GameObject train,player;
 	//Vector3 start_pos;
 
-	public static NetworkManager Instance;
+	static public NetworkManager Instance = null;
 
 	void Awake(){
 		if (Instance == null) {
@@ -57,12 +57,12 @@ public class NetworkManager : Photon.MonoBehaviour{
 
 	}
 
-	void PlayerMake(){
+	public void PlayerMake(){
 		#if UNITY_EDITOR
 		train = PhotonNetwork.Instantiate ("Train",GameManager.Instance.GetStartPos(),Quaternion.identity,0) as GameObject;
 		player = PhotonNetwork.Instantiate ("Player",GameManager.Instance.GetStartPos(),Quaternion.identity,0) as GameObject;
 		PhotonNetwork.Instantiate ("PC_Camera_rig",GameManager.Instance.GetStartPos(),Quaternion.identity,0);
-		GameObject obj1 = player.transform.Find("CardboardMainHack").gameObject;
+		//GameObject obj1 = player.transform.Find("CardboardMainHack").gameObject;
 
 
 		//GameObject obj2 =  PhotonNetwork.Instantiate ("PCCamera",Vector3.zero,Quaternion.identity,0)as GameObject;

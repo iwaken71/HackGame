@@ -39,9 +39,7 @@ public class GameManager : SingletonMonoBehaviour<GameManager>{
 	void Start () {
 		state = State.Start;
 		sceneStart = true;
-		WayPoints = GameObject.FindGameObjectWithTag ("WayPoints");
-		//start_pos = GameObject.Find ("Start").transform.position;
-		currentCenterPositon = start_pos;
+
 	}
 
 	// Update is called once per frame
@@ -50,7 +48,13 @@ public class GameManager : SingletonMonoBehaviour<GameManager>{
 		switch (state) {
 		case State.Start:
 			if (sceneStart) {
-				sceneStart = false;
+				if (SceneManager.GetActiveScene ().name == "Main") {
+					NetworkManager.Instance.PlayerMake ();
+					sceneStart = false;
+					WayPoints = GameObject.FindGameObjectWithTag ("WayPoints");
+					//start_pos = GameObject.Find ("Start").transform.position;
+					currentCenterPositon = start_pos;
+				}
 			}
 			if (pcCamera == null) {
 				pcCamera = GameObject.FindGameObjectWithTag ("PCCamera");
@@ -232,6 +236,9 @@ public class GameManager : SingletonMonoBehaviour<GameManager>{
 
 	public void SetScene(string name){
 		if (SceneManager.GetActiveScene ().name == "Title_scene") {
+			if (name == "Main") {
+				//NetworkManager.Instance.PlayerMake ();
+			}
 
 		}
 		SceneManager.LoadScene (name);
