@@ -75,11 +75,12 @@ public class GameManager : MonoBehaviour{
 				}
 			}
 			if (photonView == null) {
-				/*
+				
 				if (GameObject.Find ("NetworkManager") == null) {
-					Resources.Load ();
-				}*/
-				photonView = GameObject.Find ("NetworkManager").GetComponent<PhotonView> ();
+					photonView = (Resources.Load ("NetworkManager") as GameManager).GetComponent<PhotonView> ();
+				} else {
+					photonView = GameObject.Find ("NetworkManager").GetComponent<PhotonView> ();
+				}
 			}
 			if (train == null) {
 				if (GameObject.FindGameObjectWithTag ("Train")) {

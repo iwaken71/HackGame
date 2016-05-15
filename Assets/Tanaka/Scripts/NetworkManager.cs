@@ -99,11 +99,11 @@ public class NetworkManager : Photon.MonoBehaviour{
 		GameManager.Instance.SetiosCamera(player.transform.Find("CardboardMainHack").gameObject);
 		#endif
 	}
-
+	/*
 	[PunRPC]
 	void ChangeScene(string sceneName){
 		SceneManager.LoadScene(sceneName);
-	}
+	}*/
 	[PunRPC]
 	public void RPCSetScene(string name){
 		SceneManager.LoadScene (name);
