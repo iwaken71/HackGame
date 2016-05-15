@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour{
 
 	GameObject pcCamera;
 	GameObject iosCamera;
+	GameObject fukanCamera;
+	GameObject WebUI3;
 	PhotonView photonView;
 	GameObject train,player;
 	//ReactiveProperty<State> state = new ReactiveProperty<State>();
@@ -24,7 +26,7 @@ public class GameManager : MonoBehaviour{
 	private TrainSplineMove trainSplineMove;
 	// trainManager
 
-	static public GameManager  Instance = null;
+	static public GameManager Instance = null;
 
 	void Awake(){
 		if (Instance == null) {
@@ -62,18 +64,27 @@ public class GameManager : MonoBehaviour{
 					NetworkManager.Instance.PlayerMake ();
 					sceneStart = false;
 					WayPoints = GameObject.FindGameObjectWithTag ("WayPoints");
-					//start_pos = GameObject.Find ("Start").transform.position;
+					start_pos = GameObject.Find ("Start").transform.position;
 					currentCenterPositon = start_pos;
+
 				}
 			}
+
 			if (pcCamera == null) {
 				pcCamera = GameObject.FindGameObjectWithTag ("PCCamera");
+				//Debug.Log ("pcCamera");
 			}
+
 			if (iosCamera == null) {
 				if (player != null) {
 					iosCamera = player.transform.Find ("CardboardMainHack").gameObject;
+					//#if UNITY_EDITOR
+					//iosCamera.SetActive (false);
+					//#endif
+					//Debug.Log ("iosCamera");
 				}
 			}
+
 			if (photonView == null) {
 				/*
 				if (GameObject.Find ("NetworkManager") == null) {
@@ -81,6 +92,7 @@ public class GameManager : MonoBehaviour{
 				} else {
 				*/
 				photonView = GameObject.Find ("NetworkManager").GetComponent<PhotonView> ();
+				Debug.Log ("photonView");
 
 			}
 			if (train == null) {
@@ -91,15 +103,35 @@ public class GameManager : MonoBehaviour{
 			}
 			if (player == null) {
 				player = GameObject.FindGameObjectWithTag ("Player");
+				Debug.Log ("player");
 			}
 			if (start_pos == null) {
 				if (GameObject.Find ("Start") != null) {
 					start_pos = GameObject.Find ("Start").transform.position;
+					Debug.Log ("start_pos");
 				}
+			}
+			if (fukanCamera == null) {
+				fukanCamera = GameObject.FindGameObjectWithTag ("FukanCamera");
+				if (Application.platform == RuntimePlatform.IPhonePlayer) {
+					fukanCamera.SetActive (false);
+				}
+				Debug.Log ("fukanCamera");
+			}
+			if (WebUI3 == null) {
+				if (GameObject.FindGameObjectWithTag ("Canvas") != null) {
+					WebUI3 = GameObject.FindGameObjectWithTag ("Canvas");
+					if (Application.platform == RuntimePlatform.IPhonePlayer) {
+						WebUI3.SetActive (false);
+					}
+				}
+				Debug.Log ("WebUI3");
 			}
 
 
-			if (pcCamera != null && iosCamera != null && photonView != null && player != null && train != null) {
+
+			if (pcCamera != null && iosCamera != null && photonView != null && player != null  && train != null && fukanCamera != null && WebUI3 != null) {
+				Debug.Log ("dfasefelsfkelksj");
 				SetState (State.Game);
 			}
 
@@ -127,6 +159,7 @@ public class GameManager : MonoBehaviour{
 
 		}
 
+
 	}
 
 	public void SetPCCamera(GameObject obj){
@@ -151,27 +184,32 @@ public class GameManager : MonoBehaviour{
 	}
 	*/
 	void iosGameUpdate(){
-		#if UNITY_IOS
-		if (pcCamera && iosCamera) {
-			pcCamera.SetActive (false);
-			iosCamera.SetActive (true);
-		}
-		if (Input.touchCount > 0) {
-			if (Input.GetTouch (0).phase == TouchPhase.Began) {
-				//photonView.RPC();
+		if (Application.platform == RuntimePlatform.IPhonePlayer) {
+			if (pcCamera && iosCamera && fukanCamera && WebUI3) {
+				pcCamera.SetActive (false);
+				iosCamera.SetActive (true);
+				fukanCamera.SetActive (false);
+				WebUI3.SetActive (false);
+			}
+
+			if (Input.touchCount > 0) {
+				if (Input.GetTouch (0).phase == TouchPhase.Began) {
+					//photonView.RPC();
+				}
 			}
 		}
-		#endif
 	}
 	void pcGameUpdate(){
-		#if UNITY_EDITOR
-		if (pcCamera && iosCamera) {
+		if (Application.platform == RuntimePlatform.OSXEditor)
+		if (pcCamera && iosCamera && fukanCamera && WebUI3) {
 			pcCamera.SetActive (true);
 			iosCamera.SetActive (false);
+			fukanCamera.SetActive (true);
+			WebUI3.SetActive (true);
 		}
-		#endif
-
 	}
+
+
 
 	public void SetState(State next){
 		state = next;

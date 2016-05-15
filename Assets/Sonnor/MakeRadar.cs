@@ -29,7 +29,7 @@ public class MakeRadar : MonoBehaviour {
 	// Update is called once per frame
 	void FixedUpdate () {
 
-		Detector.transform.RotateAround (this.gameObject.transform.position, Vector3.up, speed);
+		Detector.transform.RotateAround (this.gameObject.transform.position, Vector3.up, speed *Time.fixedDeltaTime);
 
 	}
 }

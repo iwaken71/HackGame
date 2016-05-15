@@ -11,6 +11,8 @@ TagManager:
   - food
   - Goal
   - Rock
+  - FukanCamera
+  - Canvas
   layers:
   - Default
   - TransparentFX

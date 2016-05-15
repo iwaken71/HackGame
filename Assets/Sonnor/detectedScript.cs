@@ -27,7 +27,6 @@ public class detectedScript : MonoBehaviour {
 
 	void OnTriggerEnter (Collider collider){
 
-		Debug.Log ("Test");
 		
 		if (collider.name == "radar") {
 			SpawnedObject.SetActive (true);

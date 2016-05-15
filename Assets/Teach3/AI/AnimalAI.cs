@@ -45,7 +45,6 @@ public class AnimalAI : MonoBehaviour {
 	}
 
 	void OnTriggerEnter (Collider col ) {
-		Debug.Log (col.name);
 
 		if (col.transform.tag == "PlayerSpace") {
 
@@ -84,11 +83,12 @@ public class AnimalAI : MonoBehaviour {
 	}
 
 	void MoveTo (){
+		if (GameManager.Instance.GetState () == GameManager.State.Game) {
+			Vector3 direction = (target.position - transform.position).normalized;
 
-		Vector3 direction = (target.position - transform.position).normalized;
-
-		transform.position += direction * speed * Time.deltaTime;
-		transform.LookAt (target.position);
+			transform.position += direction * speed * Time.deltaTime;
+			transform.LookAt (target.position);
+		}
 
 		//ここでプレーヤーを探す処理
 

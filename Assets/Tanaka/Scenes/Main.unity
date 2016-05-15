@@ -431,8 +431,8 @@ GameObject:
   - 92: {fileID: 218211022}
   - 81: {fileID: 218211021}
   m_Layer: 0
-  m_Name: Camera
-  m_TagString: Untagged
+  m_Name: FukanCamera
+  m_TagString: FukanCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -621,7 +621,7 @@ GameObject:
   - 114: {fileID: 333451887}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
