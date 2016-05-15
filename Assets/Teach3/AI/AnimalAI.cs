@@ -18,14 +18,14 @@ public class AnimalAI : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+		animation.Play (MoveAnimation);
 	}
 
 	void Awake () {
 
 		animation = GetComponent<Animation> ();
 
-		animation.Play (MoveAnimation);
+
 
 	}
 	

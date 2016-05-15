@@ -12,6 +12,10 @@ public class NetworkManager : Photon.MonoBehaviour {
 		PhotonNetwork.ConnectUsingSettings("0.1");
 		photonView = GetComponent<PhotonView> ();
 		//start_pos = GameObject.Find ("Start").transform.position;
+		if (PhotonNetwork.connectionStateDetailed == PeerState.Joined) {
+			PlayerMake ();
+
+		}
 	}
 
 	//PhotonNetwork.ConnectUsingSettingsを行うと呼ばれる

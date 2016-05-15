@@ -14,6 +14,9 @@ public class ClearChangeScene : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.JoystickButton17)) {
 			SceneManager.LoadScene ("Title_scene");
 		}
+		if (Input.GetKeyDown (KeyCode.Space)) {
+			SceneManager.LoadScene ("Title_scene");
+		}
 	
 	}
 }

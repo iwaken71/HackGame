@@ -11,7 +11,10 @@ public class TitleScene_Change : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.JoystickButton17) || Input.GetKeyDown(KeyCode.Space)) {
+		if (Input.GetKeyDown (KeyCode.JoystickButton17)) {
+			SceneManager.LoadScene ("Main");
+		}
+		if (Input.GetKeyDown (KeyCode.Space)) {
 			SceneManager.LoadScene ("Main");
 		}
 	}

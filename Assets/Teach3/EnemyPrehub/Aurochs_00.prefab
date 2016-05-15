@@ -890,6 +890,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 434dda5a15ee846bfb1cb1077d153638, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MoveAnimation: walk
   AttackAnimation: 61747461636b
   FeededAnimation: 61747461636b32
   fadeTime: 2
